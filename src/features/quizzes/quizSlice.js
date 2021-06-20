@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+import { addQuizId } from "../topics/topicSlice";
 
 const quizSlice = createSlice({
 
@@ -11,14 +12,14 @@ const quizSlice = createSlice({
 
         addQuiz: ( state, action ) => {
 
-            const {id, name, topicId } = action.payload
+            const {id, name, topicId, cardIds } = action.payload
 
             state.quizzes[id] = {
 
                 id: id,
                 name: name,
                 topicId: topicId,
-                cardIds: []
+                cardIds: cardIds
 
             }
         }
@@ -37,6 +38,7 @@ export const addQuiz = (quiz) => {
 export const thunkAddQuiz = (payload) => {
     return (dispatch) => {
         dispatch(addQuiz(payload))
+        dispatch(addQuizId(payload))
     }
 }
 

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 export default function Topics() {
 
   const topics = useSelector(selectTopics); // replace this with a call to your selector to select all the topics in state
+  console.log(topics)
 
   return (
     <section className="center">
@@ -19,7 +20,7 @@ export default function Topics() {
              <img src={topic.icon} alt="" />
              <div className="text-content">
                <h2>{topic.name}</h2>
-               <p>{topic.quizIds.length ? topic.quizIds.length : 0} Quizzes</p>
+               <p>{topic.quizIds.length} Quizzes</p>
              </div>
            </div>
          </Link>
